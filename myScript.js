@@ -1,6 +1,7 @@
 let allMessages = [];
 const msgAndres = [];
 const msgAna = [];
+const msgMe = [];
 
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -15,18 +16,30 @@ async function fetchMessagesJSON() {
     for (let i = 0; i < allMessages.length; i++) {
         if(allMessages[i].sender === "Andres"){
             msgAndres.push(allMessages[i]);
-            const node = document.createElement("div");
+            const node = document.createElement("li");
             node.classList.add('singleMessage');
             const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
             node.appendChild(textNode);
             document.getElementById("msgListAndres").appendChild(node);
-        }else{
+        }else if(allMessages[i].sender === "Ana"){
             msgAna.push(allMessages[i]);
             const node = document.createElement("div");
             node.classList.add('singleMessage');
             const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
             node.appendChild(textNode);
             document.getElementById("msgListAna").appendChild(node);
+        }else if(allMessages[i].sender === "Me"){
+            msgMe.push(allMessages[i]);
+            const node = document.createElement("div");
+            node.classList.add('myMessages');
+            const textNode = document.createTextNode(msgMe[msgMe.length-1].content);
+            node.appendChild(textNode);
+            if(allMessages[i].recipient === "Andres"){
+                document.getElementById("msgListAndres").appendChild(node);
+            }else{
+                document.getElementById("msgListAna").appendChild(node);
+            }
+            document.getElementById("msgListAndres").appendChild(node);
         }
     }
     console.log("Mensajes de Andres: " + msgAndres[0].content);
