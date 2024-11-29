@@ -21,6 +21,23 @@ li {
     text-decoration: none;
 }
 
+.conversationAndres > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #333;
+    min-width: 100vw;
+}
+
+.conversationAndres > li {
+    background-color: #005C4B;
+    border-radius: 0.25rem;
+    margin: 0.5rem 0;
+    padding: 0.25rem 1rem;
+    float: right;
+}
+
 li:hover:not(.active) {
     background-color: #111;
 }
@@ -53,7 +70,6 @@ li:hover:not(.active) {
 }
 
 .singleMessage {
-    background-color: lightgoldenrodyellow;
     border-radius: 0.25rem;
     margin: 0.5rem 0;
     padding: 0.25rem 1rem;

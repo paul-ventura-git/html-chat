@@ -30,7 +30,7 @@ async function fetchMessagesJSON() {
             document.getElementById("msgListAna").appendChild(node);
         }else if(allMessages[i].sender === "Me"){
             msgMe.push(allMessages[i]);
-            const node = document.createElement("div");
+            const node = document.createElement("li");
             node.classList.add('myMessages');
             const textNode = document.createTextNode(msgMe[msgMe.length-1].content);
             node.appendChild(textNode);
