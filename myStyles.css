@@ -1,0 +1,60 @@
+body {
+    font-family: "Barlow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.users {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0.5rem 0;
+}
+
+.user {
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    border-style: none;
+    border-radius: 4px;
+
+    padding: 0px 10px;
+    margin: 0 0.5rem;
+}
+
+.conversationAndres {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0.25rem 0;
+    background-color: lightskyblue;
+}
+
+.conversationAna {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0.25rem 0;
+    background-color: salmon;
+}
+
+.messageList {
+    background-color: yellow;
+    border-radius: 0.25rem;
+    padding: 0.25rem 1rem;
+    margin: 0.5rem 0.25rem;
+}
+
+.singleMessage {
+    background-color: lightgoldenrodyellow;
+    border-radius: 0.25rem;
+    margin: 0.5rem 0;
+    padding: 0.25rem 1rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0.5rem 0.5rem;
+}
