@@ -19,24 +19,28 @@ async function fetchMessagesJSON() {
     for (let i = 0; i < allMessages.length; i++) {
         if(allMessages[i].sender === "Andres"){
             msgAndres.push(allMessages[i]);
+            // Crear los nodos necesarios
             const node = document.createElement("div");
             const timeDivNode = document.createElement("div");
             const timeTextNode = document.createTextNode(msgAndres[msgAndres.length-1].dateTime);
+            const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
+            // Darle las clases para los estilos CSS
             node.classList.add('singleMessage');
             timeDivNode.classList.add('timeNode');
-            const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
+            // .appendChild en orden jerárquico
             node.appendChild(textNode);
             node.appendChild(timeDivNode);
             timeDivNode.appendChild(timeTextNode);
+            // Agregar el nuevo nodo a la lista de mensajes
             document.getElementById("msgListAndres").appendChild(node);
         }else if(allMessages[i].sender === "Ana"){
             msgAna.push(allMessages[i]);
             const node = document.createElement("div");
             const timeDivNode = document.createElement("div");
             const timeTextNode = document.createTextNode(msgAna[msgAna.length-1].dateTime);
+            const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
             node.classList.add('singleMessage');
             timeDivNode.classList.add('timeNode');
-            const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
             node.appendChild(textNode);
             node.appendChild(timeDivNode);
             timeDivNode.appendChild(timeTextNode);
@@ -48,9 +52,9 @@ async function fetchMessagesJSON() {
                 const node = document.createElement("div");
                 const timeDivNode2 = document.createElement("div");
                 const timeTextNode2 = document.createTextNode(msgAndres[msgAndres.length-1].dateTime);
+                const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
                 node.classList.add('myMessages');
                 timeDivNode2.classList.add('timeNode');
-                const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
                 node.appendChild(textNode);
                 node.appendChild(timeDivNode2);
                 timeDivNode2.appendChild(timeTextNode2);
@@ -60,9 +64,9 @@ async function fetchMessagesJSON() {
                 const node = document.createElement("div");
                 const timeDivNode2 = document.createElement("div");
                 const timeTextNode2 = document.createTextNode(msgAna[msgAna.length-1].dateTime);
+                const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
                 node.classList.add('myMessages');
                 timeDivNode2.classList.add('timeNode');
-                const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
                 node.appendChild(textNode);
                 node.appendChild(timeDivNode2);
                 timeDivNode2.appendChild(timeTextNode2);
@@ -109,9 +113,14 @@ async function sendingMessage() {
             .catch((error) => console.error(error));
 
         const node = document.createElement("div");
-        node.classList.add('myMessages');
+        const timeDivNode = document.createElement("div");
+        const timeTextNode = document.createTextNode(msgAndres[msgAndres.length-1].dateTime);
         const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
+        node.classList.add('myMessages');
+        timeDivNode.classList.add('timeNode');
         node.appendChild(textNode);
+        node.appendChild(timeDivNode);
+        timeDivNode.appendChild(timeTextNode);
         document.getElementById("msgListAndres").appendChild(node);
     } else if(document.getElementById("AnaPanel").style.display === "block") {
 
@@ -140,9 +149,14 @@ async function sendingMessage() {
             .catch((error) => console.error(error));
 
         const node = document.createElement("div");
-        node.classList.add('myMessages');
+        const timeDivNode = document.createElement("div");
+        const timeTextNode = document.createTextNode(msgAndres[msgAndres.length-1].dateTime);
         const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
+        node.classList.add('myMessages');
+        timeDivNode.classList.add('timeNode');
         node.appendChild(textNode);
+        node.appendChild(timeDivNode);
+        timeDivNode.appendChild(timeTextNode);
         document.getElementById("msgListAna").appendChild(node);
     }
 }
