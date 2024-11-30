@@ -75,7 +75,9 @@ li:hover:not(.active) {
 }
 
 .timeNode {
+    color: darkgray;
     font-size: 8px;
+    margin-top: 5px;
 }
 
 /*

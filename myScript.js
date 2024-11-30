@@ -32,25 +32,40 @@ async function fetchMessagesJSON() {
         }else if(allMessages[i].sender === "Ana"){
             msgAna.push(allMessages[i]);
             const node = document.createElement("div");
+            const timeDivNode = document.createElement("div");
+            const timeTextNode = document.createTextNode(msgAna[msgAna.length-1].dateTime);
             node.classList.add('singleMessage');
+            timeDivNode.classList.add('timeNode');
             const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
             node.appendChild(textNode);
+            node.appendChild(timeDivNode);
+            timeDivNode.appendChild(timeTextNode);
             document.getElementById("msgListAna").appendChild(node);
         }
         if(allMessages[i].sender === "Carlos"){
             if(allMessages[i].recipient === "Andres"){
                 msgAndres.push(allMessages[i]);
                 const node = document.createElement("div");
+                const timeDivNode2 = document.createElement("div");
+                const timeTextNode2 = document.createTextNode(msgAndres[msgAndres.length-1].dateTime);
                 node.classList.add('myMessages');
+                timeDivNode2.classList.add('timeNode');
                 const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
                 node.appendChild(textNode);
+                node.appendChild(timeDivNode2);
+                timeDivNode2.appendChild(timeTextNode2);
                 document.getElementById("msgListAndres").appendChild(node);
             }else if(allMessages[i].recipient === "Ana"){
                 msgAna.push(allMessages[i]);
                 const node = document.createElement("div");
+                const timeDivNode2 = document.createElement("div");
+                const timeTextNode2 = document.createTextNode(msgAna[msgAna.length-1].dateTime);
                 node.classList.add('myMessages');
+                timeDivNode2.classList.add('timeNode');
                 const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
                 node.appendChild(textNode);
+                node.appendChild(timeDivNode2);
+                timeDivNode2.appendChild(timeTextNode2);
                 document.getElementById("msgListAna").appendChild(node);
             }
 
