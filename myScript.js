@@ -31,7 +31,7 @@ async function fetchMessagesJSON() {
             node.appendChild(textNode);
             document.getElementById("msgListAna").appendChild(node);
         }
-        if(allMessages[i].sender === "Me"){
+        if(allMessages[i].sender === "Carlos"){
             if(allMessages[i].recipient === "Andres"){
                 msgAndres.push(allMessages[i]);
                 const node = document.createElement("div");
@@ -61,14 +61,16 @@ const button = document.getElementById("button");
 button.addEventListener("click", sendingMessage);
 
 async function sendingMessage() {
+
     // Si la conversación con Andrés está como "Activa"...
     if(document.getElementById("AndresPanel").style.display === "block"){
-        msgAndres[msgAndres.length-1].content = document.getElementById("myMessage").value;
-        msgAndres[msgAndres.length-1].sender = "Andres";
+        msgAndres[msgAndres.length-1].content = document.getElementById("inputMessage").value;
+        msgAndres[msgAndres.length-1].sender = localStorage.getItem("currentUser");
 
         let raw = JSON.stringify({
             "content": msgAndres[msgAndres.length-1].content,
-            "sender": msgAndres[msgAndres.length-1].sender
+            "sender": msgAndres[msgAndres.length-1].sender,
+            "recipient": "Andres"
         });
 
         const requestOptions = {
@@ -90,12 +92,35 @@ async function sendingMessage() {
         const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
         node.appendChild(textNode);
         document.getElementById("msgListAndres").appendChild(node);
-    } else {
-        msgAna.push(document.getElementById("myMessage").value);
+    } else if(document.getElementById("AnaPanel").style.display === "block") {
+
+        // Si la conversación con Ana está como "Activa"...
+        msgAna[msgAna.length-1].content = document.getElementById("inputMessage").value;
+        msgAna[msgAna.length-1].sender = localStorage.getItem("currentUser");
+
+        let raw = JSON.stringify({
+            "content": msgAndres[msgAndres.length-1].content,
+            "sender": msgAndres[msgAndres.length-1].sender,
+            "recipient": "Ana"
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        console.log(raw);
+
+        const response = await fetch('http://localhost:3000/msg', requestOptions)
+            .then((response) => response.text())
+            .then((result) => console.log(result))
+            .catch((error) => console.error(error));
 
         const node = document.createElement("div");
-        node.classList.add('singleMessage');
-        const textNode = document.createTextNode(msgAna[msgAna.length-1]);
+        node.classList.add('myMessages');
+        const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
         node.appendChild(textNode);
         document.getElementById("msgListAna").appendChild(node);
     }
