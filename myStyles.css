@@ -21,11 +21,14 @@ li {
     text-decoration: none;
 }
 
+li:hover:not(.active) {
+    background-color: #111;
+}
+
 .conversationAndres > ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 200px;
     background-color: #333;
     min-width: 100vw;
 }
@@ -35,11 +38,7 @@ li {
     border-radius: 0.25rem;
     margin: 0.5rem 0;
     padding: 0.25rem 1rem;
-    float: right;
-}
 
-li:hover:not(.active) {
-    background-color: #111;
 }
 
 .active {
@@ -70,17 +69,19 @@ li:hover:not(.active) {
 }
 
 .singleMessage {
+    color: white;
     border-radius: 0.25rem;
     margin: 0.5rem 0;
     padding: 0.25rem 1rem;
 }
 
 .myMessages {
+    color: white;
     background-color: #005C4B;
     border-radius: 0.25rem;
     margin: 0.5rem 0;
     padding: 0.25rem 1rem;
-    float: right;
+    text-align: right;
 }
 
 .form {

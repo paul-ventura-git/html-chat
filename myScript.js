@@ -15,7 +15,7 @@ async function fetchMessagesJSON() {
     for (let i = 0; i < allMessages.length; i++) {
         if(allMessages[i].sender === "Andres"){
             msgAndres.push(allMessages[i]);
-            const node = document.createElement("li");
+            const node = document.createElement("div");
             node.classList.add('singleMessage');
             const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
             node.appendChild(textNode);
@@ -31,7 +31,7 @@ async function fetchMessagesJSON() {
         if(allMessages[i].sender === "Me"){
             if(allMessages[i].recipient === "Andres"){
                 msgAndres.push(allMessages[i]);
-                const node = document.createElement("li");
+                const node = document.createElement("div");
                 node.classList.add('myMessages');
                 const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
                 node.appendChild(textNode);
