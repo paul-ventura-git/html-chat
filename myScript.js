@@ -11,6 +11,7 @@ myHeaders.append("Content-Type", "application/json");
 document.getElementById("AndresPanel").style.display = "block";
 document.getElementById("AnaPanel").style.display = "none";
 
+// Al arrancar, rellenar las conversaciones con la data del backend
 async function fetchMessagesJSON() {
     const response = await fetch('http://localhost:3000/msg');
     allMessages = await response.json();
@@ -19,9 +20,14 @@ async function fetchMessagesJSON() {
         if(allMessages[i].sender === "Andres"){
             msgAndres.push(allMessages[i]);
             const node = document.createElement("div");
+            const timeDivNode = document.createElement("div");
+            const timeTextNode = document.createTextNode(msgAndres[msgAndres.length-1].dateTime);
             node.classList.add('singleMessage');
+            timeDivNode.classList.add('timeNode');
             const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
             node.appendChild(textNode);
+            node.appendChild(timeDivNode);
+            timeDivNode.appendChild(timeTextNode);
             document.getElementById("msgListAndres").appendChild(node);
         }else if(allMessages[i].sender === "Ana"){
             msgAna.push(allMessages[i]);

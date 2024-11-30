@@ -74,6 +74,10 @@ li:hover:not(.active) {
     text-align: right;
 }
 
+.timeNode {
+    font-size: 8px;
+}
+
 /*
     Sending Messages Form
  */
