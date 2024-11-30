@@ -2,6 +2,9 @@ let allMessages = [];
 const msgAndres = [];
 const msgAna = [];
 
+localStorage.setItem("currentUser", "Carlos");
+document.getElementById("currentUser").textContent = localStorage.getItem("currentUser");
+
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
@@ -58,6 +61,7 @@ const button = document.getElementById("button");
 button.addEventListener("click", sendingMessage);
 
 async function sendingMessage() {
+    // Si la conversación con Andrés está como "Activa"...
     if(document.getElementById("AndresPanel").style.display === "block"){
         msgAndres[msgAndres.length-1].content = document.getElementById("myMessage").value;
         msgAndres[msgAndres.length-1].sender = "Andres";
@@ -82,7 +86,7 @@ async function sendingMessage() {
             .catch((error) => console.error(error));
 
         const node = document.createElement("div");
-        node.classList.add('singleMessage');
+        node.classList.add('myMessages');
         const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
         node.appendChild(textNode);
         document.getElementById("msgListAndres").appendChild(node);
