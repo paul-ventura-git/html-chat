@@ -1,9 +1,15 @@
+/*
+    Body
+ */
 body {
     font-family: "Barlow", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
+/*
+    Navbar
+ */
 ul {
     list-style-type: none;
     margin: 0;
@@ -25,7 +31,14 @@ li:hover:not(.active) {
     background-color: #111;
 }
 
-.conversationAndres > ul {
+.active {
+    background-color: #04AA6D;
+}
+
+/*
+    Conversations
+ */
+.conversation > ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -33,7 +46,7 @@ li:hover:not(.active) {
     min-width: 100vw;
 }
 
-.conversationAndres > li {
+.conversation > li {
     background-color: #005C4B;
     border-radius: 0.25rem;
     margin: 0.5rem 0;
@@ -41,33 +54,9 @@ li:hover:not(.active) {
 
 }
 
-.active {
-    background-color: #04AA6D;
-}
-
-.conversationAndres {
-    display: flex;
-    flex-direction: row;
-
-    padding: 0.25rem 0;
-    background-color: lightskyblue;
-}
-
-.conversationAna {
-    display: flex;
-    flex-direction: row;
-
-    padding: 0.25rem 0;
-    background-color: salmon;
-}
-
-.messageList {
-    background-color: yellow;
-    border-radius: 0.25rem;
-    padding: 0.25rem 1rem;
-    margin: 0.5rem 0.25rem;
-}
-
+/*
+    Single messages
+ */
 .singleMessage {
     color: white;
     border-radius: 0.25rem;
@@ -84,6 +73,9 @@ li:hover:not(.active) {
     text-align: right;
 }
 
+/*
+    Sending Messages Form
+ */
 .form {
     display: flex;
     flex-direction: row;

@@ -36,9 +36,9 @@ async function fetchMessagesJSON() {
                 const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
                 node.appendChild(textNode);
                 document.getElementById("msgListAndres").appendChild(node);
-            }else{
+            }else if(allMessages[i].recipient === "Ana"){
                 msgAna.push(allMessages[i]);
-                const node = document.createElement("li");
+                const node = document.createElement("div");
                 node.classList.add('myMessages');
                 const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
                 node.appendChild(textNode);
@@ -114,17 +114,4 @@ function changeWindow2() {
     document.getElementById("AndresPanel").style.display = "none";
     document.getElementById("AnaPanel").style.display = "block";
 }
-
-// This is a "Hello world" for JQuery only for testing...
-/*
-$("button").click(function(){
-    $.get("https://jsonplaceholder.typicode.com/users", function(data, status){
-        data.map(item => {
-            console.log(item.name, item.email, item.phone);
-        })
-    });
-});
-*/
-
-
 
