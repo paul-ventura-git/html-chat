@@ -23,6 +23,8 @@ async function fetchMessagesJSON() {
             const node = document.createElement("div");
             const timeDivNode = document.createElement("div");
             const timeTextNode = document.createTextNode(msgAndres[msgAndres.length-1].dateTime);
+            const timeTextNodeData = new Date(timeTextNode.data);
+            timeTextNode.data = timeTextNodeData.getHours() + ":" + timeTextNodeData.getMinutes();
             const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
             // Darle las clases para los estilos CSS
             node.classList.add('singleMessage');
@@ -38,6 +40,8 @@ async function fetchMessagesJSON() {
             const node = document.createElement("div");
             const timeDivNode = document.createElement("div");
             const timeTextNode = document.createTextNode(msgAna[msgAna.length-1].dateTime);
+            const timeTextNodeData = new Date(timeTextNode.data);
+            timeTextNode.data = timeTextNodeData.getHours() + ":" + timeTextNodeData.getMinutes();
             const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
             node.classList.add('singleMessage');
             timeDivNode.classList.add('timeNode');
@@ -52,6 +56,8 @@ async function fetchMessagesJSON() {
                 const node = document.createElement("div");
                 const timeDivNode2 = document.createElement("div");
                 const timeTextNode2 = document.createTextNode(msgAndres[msgAndres.length-1].dateTime);
+                const timeTextNodeData = new Date(timeTextNode2.data);
+                timeTextNode2.data = timeTextNodeData.getHours() + ":" + timeTextNodeData.getMinutes();
                 const textNode = document.createTextNode(msgAndres[msgAndres.length-1].content);
                 node.classList.add('myMessages');
                 timeDivNode2.classList.add('timeNode');
@@ -64,6 +70,8 @@ async function fetchMessagesJSON() {
                 const node = document.createElement("div");
                 const timeDivNode2 = document.createElement("div");
                 const timeTextNode2 = document.createTextNode(msgAna[msgAna.length-1].dateTime);
+                const timeTextNodeData = new Date(timeTextNode2.data);
+                timeTextNode2.data = timeTextNodeData.getHours() + ":" + timeTextNodeData.getMinutes();
                 const textNode = document.createTextNode(msgAna[msgAna.length-1].content);
                 node.classList.add('myMessages');
                 timeDivNode2.classList.add('timeNode');
