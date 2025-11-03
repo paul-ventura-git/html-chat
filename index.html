@@ -11,30 +11,27 @@
     <script src="assets/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
+  <div class="container">
     <ul>
-        <li id="Andres">
-            <p>Andrés</p>
-        </li>
-        <li id="Ana">
-            <p>Ana</p>
-        </li>
-        <li id="Carlos" style="float: right;" class="active">
-            <div id="currentUser"></div>
-        </li>
+      <li id="Carlos" style="float: right;" class="active">
+          <div id="currentUser"></div>
+      </li>
     </ul>
-
-    <div id="AndresPanel" class="conversation">
-        <ul id="msgListAndres">
-        </ul>
+    <div class="fila1">
+      <div id="listaAmigos" class="col1">
+      </div>
+      <div class="col2">
+        <div id="mensaje" class="mensaje">
+        </div>
+      </div>       
     </div>
-    <div id="AnaPanel" class="conversation">
-        <ul id="msgListAna">
-        </ul>
-    </div>
-    <div class="form">
+    <div class="fila2">
+      <div class="form">
         <input id="inputMessage" type="text" name="inputMessage" required></input>
         <button id="button">Enviar</button>
+      </div>
     </div>
-    <script src="myScript.js"></script>
+  </div>
+  <script type="module" src="chatScript.js"></script>
 </body>
 </html>

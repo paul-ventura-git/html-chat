@@ -2,15 +2,18 @@
     Body
  */
 body {
-    font-family: "Barlow", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
+
 
 /*
     Navbar
  */
 ul {
+    min-height:3.6vh;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -36,47 +39,105 @@ li:hover:not(.active) {
 }
 
 /*
-    Conversations
- */
-.conversation > ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 20px;
-    background-color: #111;
-    min-width: 80%;
+    CSS Estructural
+ */ 
+.fila1 {
+  display: flex;
+  flex-direction: row;
+
+  min-height: 92.5vh;
 }
 
-.conversation > li {
-    background-color: #005C4B;
-    border-radius: 0.25rem;
-    margin: 0.5rem 0;
-    padding: 0.25rem 1rem;
+.fila2 {
+  display: flex;
+  flex-direction: row;
 
+  min-height: 3.6vh;
+  background-color: #333;
+}
+
+.col1 {
+  display: flex;
+  flex-direction: column;
+
+  background-color:#04AA6D;
+  min-width: 30vw;
+}
+
+.col2 {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #111;
+  min-width: 70vw;
 }
 
 /*
-    Single messages
+    Lista de amigos
+ */
+.amigo {
+  padding: 8px 12px;
+  background-color: #04AA6D;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: "Barlow", sans-serif;
+}
+
+.amigo:hover {
+  background-color: #e2e2e2;
+}
+
+/* 💚 Receptor activo */
+.amigo.activo {
+  background-color: #c4f1c4;
+  font-weight: bold;
+  color: #2a7a2a;
+}
+
+/*
+    Conversations
+ */
+.mensaje {
+  background-color: #04AA6D;
+  border-radius: 5px;
+  margin:24px;
+  padding:12px;
+}
+
+/*
+    Mensajes de otros usuarios
  */
 .singleMessage {
     color: white;
     background-color: #333;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     margin: 0.5rem 0;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
+    align-self: flex-start;      /* Alineado a la izquierda */
+    max-width: 80%;
+    word-wrap: break-word;
 }
 
+/*
+    Mensajes del currentUser
+ */
 .myMessages {
     color: white;
     background-color: #005C4B;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     margin: 0.5rem 0;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
+    align-self: flex-end;        /* Alineado a la derecha */
     text-align: right;
+    max-width: 80%;
+    word-wrap: break-word;
 }
 
 .timeNode {
     color: darkgray;
-    font-size: 8px;
+    font-size: 10px;
     margin-top: 5px;
 }
 
@@ -84,8 +145,9 @@ li:hover:not(.active) {
     Sending Messages Form
  */
 .form {
-    display: flex;
-    flex-direction: row;
-
-    padding: 0.5rem 0.5rem;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  float: right;
+  padding: 0.5rem 0.5rem;
 }
