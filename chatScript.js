@@ -6,12 +6,12 @@ import { todosLosMensajes as mensajesIniciales } from './todosLosMensajes.js';
 
 localStorage.clear();
 
-// 🔹 Si no hay usuarios en localStorage, se crean los iniciales
+// Si no hay usuarios en localStorage, se crean los iniciales
 if (!localStorage.getItem("usuarios")) {
   const usuarios = [
-    { id: 1, nombre: "Paul", emisor: false, receptor: true },
-    { id: 2, nombre: "Lucía", emisor: true, receptor: false },
-    { id: 3, nombre: "Carlos", emisor: false, receptor: false }
+    { id: 1, nombre: "Paul", emisor: true, receptor: false },
+    { id: 2, nombre: "Lucía", emisor: false, receptor: false },
+    { id: 3, nombre: "Carlos", emisor: false, receptor: true }
   ];
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
 }
@@ -21,16 +21,16 @@ let usuariosGuardados = JSON.parse(localStorage.getItem("usuarios"));
 
 // Separar el currentUser (emisor) y los amigos (no emisores)
 const currentUser = usuariosGuardados.find(u => u.emisor === true);
-console.log(currentUser)
+
 const amigos = usuariosGuardados.filter(u => u.emisor === false);
 
 // Mostrar el nombre del usuario actual
 document.getElementById("currentUser").textContent = currentUser.nombre;
 
-// Contenedor de amigos
+// Llamar al contenedor de amigos
 const contenedor = document.getElementById("listaAmigos");
 
-// Crear un div por cada amigo
+// Crear un <div> por cada amigo
 amigos.forEach(amigo => {
   const divAmigo = document.createElement("div");
   divAmigo.textContent = amigo.nombre;

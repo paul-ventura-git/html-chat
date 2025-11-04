@@ -3,21 +3,21 @@ export let todosLosMensajes = [
     id: 1,
     emisor: "Paul",
     receptor: "Lucía",
-    mensaje: "Buenos días.",
+    mensaje: "Mensaje de Paul a Lucía",
     fechaHora: "2025-11-03T11:55:23"
   },
   {
     id: 2,
     emisor: "Lucía",
     receptor: "Carlos",
-    mensaje: "Buenos días, también.",
+    mensaje: "Mensaje de Lucía a Carlos",
     fechaHora: "2025-11-03T11:55:23"
   },
   {
     id: 3,
     emisor: "Carlos",
     receptor: "Paul",
-    mensaje: "Buenos días, por sobre todas las cosas.",
+    mensaje: "Mensaje de Carlos a Paul",
     fechaHora: "2025-11-03T11:55:23"
   },
 ]
