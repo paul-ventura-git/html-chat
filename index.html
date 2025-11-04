@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="myStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +12,6 @@
     <script src="assets/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-  <div class="container">
     <ul>
       <li id="Carlos" style="float: right;" class="active">
           <div id="currentUser"></div>
@@ -27,11 +27,17 @@
     </div>
     <div class="fila2">
       <div class="form">
-        <input id="inputMessage" type="text" name="inputMessage" required></input>
+        <input 
+          id="inputMessage" 
+          type="text" 
+          name="inputMessage"
+          placeholder="Escriba aquí su mensaje..." 
+          required
+        >
+        </input>
         <button id="button">Enviar</button>
       </div>
     </div>
-  </div>
   <script type="module" src="chatScript.js"></script>
 </body>
 </html>

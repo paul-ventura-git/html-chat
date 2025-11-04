@@ -4,13 +4,11 @@ import { todosLosMensajes as mensajesIniciales } from './todosLosMensajes.js';
 
 /////////////////////////////////////// USUARIOS //////////////////////////////////////////
 
-localStorage.clear();
-
 // 🔹 Si no hay usuarios en localStorage, se crean los iniciales
 if (!localStorage.getItem("usuarios")) {
   const usuarios = [
-    { id: 1, nombre: "Paul", emisor: false, receptor: true },
-    { id: 2, nombre: "Lucía", emisor: true, receptor: false },
+    { id: 1, nombre: "Paul", emisor: true, receptor: false },
+    { id: 2, nombre: "Lucía", emisor: false, receptor: true },
     { id: 3, nombre: "Carlos", emisor: false, receptor: false }
   ];
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
@@ -21,26 +19,25 @@ let usuariosGuardados = JSON.parse(localStorage.getItem("usuarios"));
 
 // Separar el currentUser (emisor) y los amigos (no emisores)
 const currentUser = usuariosGuardados.find(u => u.emisor === true);
-console.log(currentUser)
 const amigos = usuariosGuardados.filter(u => u.emisor === false);
 
 // Mostrar el nombre del usuario actual
-document.getElementById("currentUser").textContent = currentUser.nombre;
+$("#currentUser").text(currentUser.nombre);
 
 // Contenedor de amigos
-const contenedor = document.getElementById("listaAmigos");
+const contenedor = $("#listaAmigos");
 
 // Crear un div por cada amigo
 amigos.forEach(amigo => {
-  const divAmigo = document.createElement("div");
-  divAmigo.textContent = amigo.nombre;
-  divAmigo.classList.add("amigo");
+  const divAmigo = $("<div></div>")
+    .text(amigo.nombre)
+    .addClass("amigo");
 
   // Resaltar si es el receptor activo
-  if (amigo.receptor) divAmigo.classList.add("activo");
+  if (amigo.receptor) divAmigo.addClass("activo");
 
   // Evento al hacer clic sobre un amigo
-  divAmigo.addEventListener("click", () => {
+  divAmigo.on("click", function () {
     usuariosGuardados = JSON.parse(localStorage.getItem("usuarios"));
     const amigoActual = usuariosGuardados.find(u => u.id === amigo.id);
 
@@ -58,15 +55,15 @@ amigos.forEach(amigo => {
     localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
 
     // Actualizar clases visuales
-    document.querySelectorAll(".amigo").forEach(div => div.classList.remove("activo"));
-    divAmigo.classList.add("activo");
+    $(".amigo").removeClass("activo");
+    $(this).addClass("activo");
 
     console.log(`Nuevo receptor: ${amigoActual.nombre}`);
 
     mostrarMensajes(); // 👈 actualizar la conversación visible
   });
 
-  contenedor.appendChild(divAmigo);
+  contenedor.append(divAmigo);
 });
 
 /////////////////////////////////////// MENSAJES //////////////////////////////////////////
@@ -80,13 +77,13 @@ function guardarMensajes() {
 }
 
 // Referencias al DOM
-const input = document.getElementById("inputMessage");
-const boton = document.getElementById("button");
-const contenedorMensajes = document.getElementById("mensaje");
+const input = $("#inputMessage");
+const boton = $("#button");
+const contenedorMensajes = $("#mensaje");
 
 // Mostrar los mensajes entre el currentUser y el receptor activo
 function mostrarMensajes() {
-  contenedorMensajes.innerHTML = ""; // limpiar el área
+  contenedorMensajes.empty(); // limpiar el área
 
   const usuariosActualizados = JSON.parse(localStorage.getItem("usuarios"));
   const emisor = usuariosActualizados.find(u => u.emisor === true);
@@ -103,34 +100,28 @@ function mostrarMensajes() {
 
   // Renderizar cada mensaje
   mensajesFiltrados.forEach(msg => {
-    const divMsg = document.createElement("div");
     const hora = new Date(msg.fechaHora).toLocaleTimeString([], {
       hour: '2-digit',
       minute: '2-digit'
     });
 
-    // Asignar estilo según quién envía
-    if (msg.emisor === emisor.nombre) {
-      divMsg.classList.add("myMessages");
-    } else {
-      divMsg.classList.add("singleMessage");
-    }
+    const divMsg = $("<div></div>")
+      .addClass(msg.emisor === emisor.nombre ? "myMessages" : "singleMessage")
+      .html(`
+        <div>${msg.mensaje}</div>
+        <div class="timeNode">${hora}</div>
+      `);
 
-    divMsg.innerHTML = `
-      <div>${msg.mensaje}</div>
-      <div class="timeNode">${hora}</div>
-    `;
-
-    contenedorMensajes.appendChild(divMsg);
+    contenedorMensajes.append(divMsg);
   });
 
   // Scroll al final
-  contenedorMensajes.scrollTop = contenedorMensajes.scrollHeight;
+  contenedorMensajes.scrollTop(contenedorMensajes[0].scrollHeight);
 }
 
 // Evento al presionar el botón "Enviar"
-boton.addEventListener("click", () => {
-  const mensajeTexto = input.value.trim();
+boton.on("click", function () {
+  const mensajeTexto = input.val().trim();
   if (!mensajeTexto) return;
 
   const usuariosActualizados = JSON.parse(localStorage.getItem("usuarios"));
@@ -154,7 +145,7 @@ boton.addEventListener("click", () => {
   todosLosMensajes.push(nuevoMensaje);
   guardarMensajes();
 
-  input.value = "";
+  input.val("");
   mostrarMensajes(); // 👈 actualizar vista
 });
 

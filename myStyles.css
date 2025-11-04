@@ -2,12 +2,12 @@
     Body
  */
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Barlow", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-
-
 
 /*
     Navbar
@@ -45,12 +45,13 @@ li:hover:not(.active) {
   display: flex;
   flex-direction: row;
 
-  min-height: 92.7vh;
+  min-height: 92.8vh;
 }
 
 .fila2 {
   display: flex;
   flex-direction: row;
+  justify-content: end;
 
   min-height: 3.6vh;
   background-color: #333;
@@ -91,15 +92,15 @@ li:hover:not(.active) {
 .amigo.activo {
   background-color: #c4f1c4;
   font-weight: bold;
-  color: #2a7a2a;
+  color: #111;
 }
 
 /*
-    Conversations
+    Panel verde de Conversaciones
  */
 .mensaje {
   display: flex;
-  flex-direction: column;             /* Convierte el div en un contenedor flex */
+  flex-direction: column;    /* Convierte el div en un contenedor flex */
   justify-content: center;   /* Centra horizontalmente */
 
   background-color: #04AA6D;
@@ -151,19 +152,23 @@ li:hover:not(.active) {
   display: flex;
   flex-direction: row;
   float: right;
-  padding: 0.5rem 0.5rem;
 }
 
 #button {
+  display:flex;
+
   border-radius: 5px;
   background-color:#04AA6D;
   color: white;
   border: none;
   margin: 2px;
   cursor: pointer;
+  padding: 10px
 }
 
 #inputMessage {
+  padding-left: 15px;
+  min-width: 62vw;
   border-radius: 5px;
   border: none;
   margin: 2px
